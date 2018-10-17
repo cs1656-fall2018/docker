@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="el" xml:lang="el">
+<head>
+	<title>CS1565 development environment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="Language" content="en" />
+	<meta name="robots" content="NOINDEX, NOFOLLOW">
+	<meta name="theme-color" content="#ffffff" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 	
+
+	<link href="/Styles/Plugins/Bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/Styles/Plugins/Bootstrap/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+	<link href="/Styles/Plugins/Bootstrap/bootstrap-dropdowns.css" rel="stylesheet" type="text/css" />
+	<link href="/Styles/main.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/Scripts/Plugins/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<script type="text/javascript" src="/Scripts/main.js"></script>
+	<link href="/Styles/Plugins/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+	<style>
+	</style>
+</head>
+<body class="main-page">
+<div class="page-container">
+	<div class="page-header">
+		<div class="logo-section">
+			<a class="logo" href="/">
+				<div class="logo-img image-icon-scaled"></div>
+			</a>
+			<div onclick="javascript:window.location='/'" class="cs1565-label">CS1565 development environment</div>
+		</div>
+
+	</div>
+	<div class="page-content">
+		<button class="btn floating-action-button" type="button" onclick="javascript:window.location = 'http://'+window.location.hostname+':8888/';"
+			title="Opens the Jyputer notebook application: You can edit and run any .ipynb file in your workspace directory or subdirectories."><div class="jupyter-icon-img image-icon-scaled"></div>jupyter</button>
+		<button class="btn floating-action-button" type="button" onclick="javascript:window.location='/phpmyadmin'"
+			title="Opens the phpMyAdmin admin application for the local MySql server."><div class="pma-icon-img image-icon-scaled"></div>phpMyAdmin</button>
+		<button class="btn floating-action-button" type="button" onclick="javascript:window.location = 'http://'+window.location.hostname+':7474/';"
+			title="Opens the Neo4J admin application for the local Neo4J server."><div class="neo4j-icon-img image-icon-scaled"></div>Neo4j</button>
+		<button class="btn floating-action-button" type="button" onclick="javascript:window.location = 'http://'+window.location.hostname+':1234/';"
+			title="Opens the adminMongo admin application for the local MongoDB server."><div class="adminmongo-icon-img image-icon-scaled"></div>adminMongo</button>
+		<button class="btn floating-action-button sqlite-btn disabled" type="button" onclick="javascript:if(!$(this).hasClass('disabled')){window.location = 'http://'+window.location.hostname+':8484/';}"
+			title="Opens the admin application for a local SqLite database. Run &quot;sqlite-view &lt;file&gt;&quot; inside the container to enable viewing a particular database."><div class="sqlite-icon-img image-icon-scaled"></div>sqlite-view</button>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+
+function checkSqlite(){
+	var btn = $('.sqlite-btn');
+
+	$.ajax({url:"check-page.php", method:"POST", data:{url:'http://'+window.location.hostname+':8484/'}, success:function(res){
+			if(res=='0')
+				btn.addClass('disabled');
+			else
+				btn.removeClass('disabled');
+		}, error:function(error){
+			btn.addClass('disabled');
+		}
+	});
+}
+
+var intervalID = setInterval(checkSqlite, 1000);
+
+</script>
+<script type="text/javascript" src="/Scripts/Plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="/Scripts/Plugins/jquery.fancybox.pack.js"></script>
+</body>
+</html>
