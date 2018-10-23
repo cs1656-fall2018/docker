@@ -2,9 +2,12 @@
 
 ### Step 1
 Install Docker Desktop from 
-[www.docker.com](https://www.docker.com).
+[www.docker.com](https://www.docker.com). This requires establishing a free online account with docker.
 
 We would suggest to restart your machine after installation.
+
+- under Mac:
+	Find and run Docker.app (it will probably ask you for your password)
 
 ### Step 2
 Download all files from the repository to a local directory.
