@@ -171,5 +171,9 @@ ADD website/ /var/www/html/
 ADD entrypoint.sh /temp/entrypoint.sh
 RUN chmod +x /temp/entrypoint.sh
 
+# ---------------- install libraries ----------------
+RUN pip install --upgrade pip
+RUN pip install neo4j-driver
+
 EXPOSE 80 7474 7687 8484 8888 3306 1234
 CMD ["/temp/entrypoint.sh"]
